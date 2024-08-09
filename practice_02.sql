@@ -43,6 +43,19 @@ where id%2 = 1
 and description not like 'boring'
 order by rating desc
 --BÀI 10
+Select teacher_id,
+count(distinct subject_id) as cnt
+from Teacher 
+group by teacher_id
+--BÀI 11
+select class from Courses
+group by class
+having count(student) >= 5
+--BÀI 12
+select user_id,
+count(follower_id) as followers_count
+from Followers
+group by user_id
 
 
 
