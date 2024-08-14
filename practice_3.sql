@@ -32,11 +32,27 @@ limit(2)
 select tweet_id from Tweets
 where length(content) >15
 --BÀI 7
-
+select activity_date as day,
+count(distinct user_id) as active_users
+from Activity
+where activity_date between '2019-06-27' and '2019-07-26'
+group by activity_date
 --BÀI 8
 select count(*) as employees_hired
 from employees
-where joining_date between '2022-01-01'and '2022-08-01'
+where extract(month from joining_date) between 1 and 7
+  and extract(year from joining_date) = 2022
+--BÀI 9
+select position('a' in first_name)
+from worker
+where first_name like 'Amitah'
+--BÀI 10
+select winery,
+substring(title FROM length(winery) + 2 FOR 4)
+from winemag_p2
+where country = 'Macedonia'
+
+
 
 
 
