@@ -37,6 +37,39 @@ join products as b
 on a.product_id = b.product_id 
 group by customer_id
 having count(distinct b.product_category)=3
+--BÀI 5
+select case
+      when b.name is not null then b.employee_id
+      else null
+      end as employee_id
+,b.name, count(b.employee_id) as reports_count,
+ceiling(avg(a.age)) as average_age
+from Employees as a
+left join Employees as b on a.reports_to = b.employee_id
+group by b.name
+having name is not null
+--BÀI 6
+SELECT product_name,sum(b.unit) as unit
+from Products as a
+join Orders as b
+on a.product_id = b.product_id
+where extract(month from order_date) = 2
+group by b.product_id
+having sum(b.unit)>=100
+--BÀI 7
+SELECT a.page_id
+from pages as a  
+left join page_likes as b 
+on a.page_id = b.page_id
+where b.page_id is null
+
+
+
+
+
+
+
+
 
 
 
